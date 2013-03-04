@@ -77,10 +77,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CIndieLib_vc2008.h" />
+    <ClInclude Include="Graphics2D\Point2D.h" />
+    <ClInclude Include="Graphics2D\Vector2D.h" />
+    <ClInclude Include="Graphics2D\XYPair.h" />
     <ClInclude Include="WorkingPath.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CIndieLib_vc2008.cpp" />
+    <ClCompile Include="Graphics2D\Point2D.cpp" />
+    <ClCompile Include="Graphics2D\Vector2D.cpp" />
+    <ClCompile Include="Graphics2D\XYPair.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="WorkingPath.cpp" />
   </ItemGroup>
