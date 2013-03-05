@@ -39,6 +39,9 @@
     <ClInclude Include="Game\Agent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BoidAgent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -66,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Agent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoidAgent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

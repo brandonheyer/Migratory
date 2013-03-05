@@ -13,6 +13,7 @@ Agent::Agent(void)
 Agent::Agent( Point2D& p )
 {
 	this->_location = Point2D( p );
+	this->setPosition( p.getX(), p.getY(), 0 );
 	this->_destination = Point2D();
 	this->_heading = Vector2D();
 	this->_speed = 0;
@@ -50,6 +51,7 @@ Vector2D Agent::getHeading( void )
 
 void Agent::setLocation( Point2D& p )
 {
+	this->setPosition( p.getX(), p.getY(), 0 );
 	this->_location = p;
 }
 

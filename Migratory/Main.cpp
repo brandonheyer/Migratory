@@ -7,8 +7,10 @@
 #include "IndieLib/IND_Surface.h"
 #include "IndieLib/IND_Animation.h"
 #include "IndieLib/IND_Font.h"
-#include "IndieLib/IND_Entity2d.h"
 #include "WorkingPath.h"
+#include "BoidAgent.h"
+
+#include <stdio.h>
 
 /* 
 ==================
@@ -36,7 +38,7 @@ int IndieLib()
 	// ----- Set the surfaces into 2d entities -----
 
 	// Creating 2d entity for the Rocket
-	IND_Entity2d *mBoid = new IND_Entity2d();					
+	BoidAgent *mBoid = new BoidAgent( Point2D( 400, 300 ) );					
 	mI->_entity2dManager->add( mBoid );					// Entity adding
 	mBoid->setSurface( mSurfaceBoid );					// Set the surface into the entity
 
@@ -54,6 +56,8 @@ int IndieLib()
 	float mPosX;
 	float mPosY;
 
+	Point2D position;
+
 	float width = 800;
 	float height = 600;
 
@@ -67,25 +71,21 @@ int IndieLib()
 
 		mDelta = mI->_render->getFrameTime() / 1000.0f;
 
-		mPosX = mBoid->getPosX();
-		mPosY = mBoid->getPosY();
-		
-		mPosX += 100 * mDelta;
-		mPosY += 100 * mDelta;
+		//mBoid->update( mDelta );
 
-		mPosX = fmod( mPosX, width );
-		mPosY = fmod( mPosY, height );
-
-		mAngle += mSpeedRotation * mDelta;
+		position = mBoid->getLocation();
+		mPosX = position.getX();
+		mPosY = position.getY();
 		
-		if (mScale < 0){
-			mScale = 0;
-		}
+		mPosX = fmod( mPosX + 1, width );
+		mPosY = fmod( mPosY + 1, height );
+
+		cout << mPosX << endl;
 
 		// ----- Updating entities attributes  -----
 		//mBoid->setAngleXYZ (0, 0, mAngle);
 
-		mBoid->setPosition( mPosX, mPosY, NULL );
+		mBoid->setLocation( Point2D( mPosX, mPosY ) );
 
 		// ----- Render  -----
 
