@@ -38,9 +38,10 @@ public:
 	Vector2D operator + ( const Vector2D& ) const;
 	Vector2D& operator += ( const Vector2D& );
 	Vector2D operator * ( const float ) const;
-	Vector2D operator *= ( const float );
+	Vector2D& operator *= ( const float );
 	Vector2D operator / ( const float ) const;
-	Vector2D operator /= ( const float );
+	Vector2D& operator /= ( const float );
+	
 
 	Vector2D scalePlus( const float, const Vector2D& ) const;
 	void scalePlusEquals( const float, const Vector2D& );

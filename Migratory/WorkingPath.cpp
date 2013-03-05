@@ -2,7 +2,7 @@
  * Desc: Utility methods for working paths setup
  *****************************************************************************************/
 
-#include "Defines.h"
+#include "IndieLib/Defines.h"
 #include "WorkingPath.h"
 #include <string.h>
 

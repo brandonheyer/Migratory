@@ -28,6 +28,8 @@ Suite 330, Boston, MA 02111-1307 USA
 #include "Defines.h"
 #include <list>
 
+using namespace std;
+
 // ----- Forward declarations -----
 class CollisionParser;
 class IND_Animation;
@@ -469,7 +471,7 @@ private:
 
 	// Grid areas attributes
 	bool _showGridAreas;
-
+	
 	// Collision list for surfaces (the collision list for animations is in IND_AnimationManager.h)
 	list <BOUNDING_COLLISION *> *_listBoundingCollision; // Vector of bounding areas for collision checking
 

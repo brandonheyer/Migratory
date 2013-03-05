@@ -5,7 +5,7 @@
 #ifndef _CINDIELIB_
 #define _CINDIELIB_
 
-#include "Indie.h"
+#include "IndieLib/Indie.h"
 
 class CIndieLib {
 public:

@@ -77,6 +77,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CIndieLib_vc2008.h" />
+    <ClInclude Include="Game\Agent.h" />
+    <ClInclude Include="Graphics2D\CoordinateTranslator.h" />
+    <ClInclude Include="Graphics2D\Point.h" />
     <ClInclude Include="Graphics2D\Point2D.h" />
     <ClInclude Include="Graphics2D\Vector2D.h" />
     <ClInclude Include="Graphics2D\XYPair.h" />
@@ -84,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CIndieLib_vc2008.cpp" />
+    <ClCompile Include="CoordinateTranslator.cpp" />
+    <ClCompile Include="Game\Agent.cpp" />
+    <ClCompile Include="Graphics2D\Point.cpp" />
     <ClCompile Include="Graphics2D\Point2D.cpp" />
     <ClCompile Include="Graphics2D\Vector2D.cpp" />
     <ClCompile Include="Graphics2D\XYPair.cpp" />

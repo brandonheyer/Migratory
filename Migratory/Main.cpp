@@ -4,10 +4,10 @@
 
 #include "CIndieLib_vc2008.h"
 
-#include "IND_Surface.h"
-#include "IND_Animation.h"
-#include "IND_Font.h"
-#include "IND_Entity2d.h"
+#include "IndieLib/IND_Surface.h"
+#include "IndieLib/IND_Animation.h"
+#include "IndieLib/IND_Font.h"
+#include "IndieLib/IND_Entity2d.h"
 #include "WorkingPath.h"
 
 /* 

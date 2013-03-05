@@ -9,8 +9,8 @@ public:
 	XYPair( float, float );
 	~XYPair( void );
 
-	XYPair operator = (XYPair);
-	bool operator == (XYPair);
+	XYPair operator = ( XYPair );
+	bool operator == ( const XYPair& );
 
 	float getX( void ) const;
 	float getY( void ) const;

@@ -22,7 +22,7 @@ XYPair XYPair::operator = ( XYPair p )
 	return XYPair( p.getX(), p.getY() );
 }
 
-bool XYPair::operator == ( XYPair p )
+bool XYPair::operator == ( const XYPair& p )
 {
 	float dx = fabs( this->_x - p.getX() );
 	float dy = fabs( this->_y - p.getY() );

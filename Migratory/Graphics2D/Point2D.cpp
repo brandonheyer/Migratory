@@ -1,6 +1,6 @@
 #include "Point2D.h"
 
-static const Point2D ZERO_POINT = Point2D();
+const Point2D Point2D::ZERO_POINT = Point2D();
 
 Point2D::Point2D( void ) { }
 
