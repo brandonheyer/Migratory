@@ -33,6 +33,7 @@ public:
 	
 	float dot( Vector2D );
 
+	Vector2D& operator = ( const Vector2D& ); 
 	Vector2D operator - ( const Vector2D& ) const;
 	Vector2D& operator -= ( const Vector2D& );
 	Vector2D operator + ( const Vector2D& ) const;

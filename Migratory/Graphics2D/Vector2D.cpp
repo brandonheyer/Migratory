@@ -133,6 +133,16 @@ float Vector2D::dot( Vector2D rhs )
 	return this->_x * rhs.getX() + this->_y * rhs.getY();
 }
 
+Vector2D& Vector2D::operator = ( const Vector2D& rhs ) 
+{
+	if ( this != &rhs ) {
+		this->_x = rhs.getX();
+		this->_y = rhs.getY();
+	}
+
+	return * this;
+}
+
 Vector2D Vector2D::operator - ( const Vector2D& rhs ) const
 {
 	return Vector2D( this->_x - rhs.getX(), this->_y - rhs.getY() );

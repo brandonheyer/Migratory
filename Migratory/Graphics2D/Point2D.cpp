@@ -26,6 +26,16 @@ Point2D& Point2D::operator += ( const Vector2D& rhs )
 	return *this;
 }
 
+Point2D& Point2D::operator = ( const Point2D& rhs )
+{
+	if ( this != &rhs ) {
+		this->_x = rhs.getX();
+		this->_y = rhs.getY();
+	}
+
+	return *this;
+}
+
 Point2D Point2D::scalePlus( const float scalar, const Vector2D& v ) const
 {
 	return Point2D( this->_x + ( v.getX() * scalar ), this->_y + ( v.getY() * scalar ) );

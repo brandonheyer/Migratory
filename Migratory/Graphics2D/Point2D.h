@@ -15,6 +15,7 @@ public:
 	Vector2D operator - ( const Point2D& ) const;
 	Point2D operator + ( const Vector2D& ) const;
 	Point2D& operator += ( const Vector2D& );
+	Point2D& operator = ( const Point2D& );
 
 	Point2D scalePlus( const float, const Vector2D& ) const;
 	void scalePlusEquals( const float, const Vector2D& );

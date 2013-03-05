@@ -71,14 +71,14 @@ int IndieLib()
 
 		mDelta = mI->_render->getFrameTime() / 1000.0f;
 
-		//mBoid->update( mDelta );
+		mBoid->update( mDelta );
 
 		position = mBoid->getLocation();
 		mPosX = position.getX();
 		mPosY = position.getY();
 		
-		mPosX = fmod( mPosX + 1, width );
-		mPosY = fmod( mPosY + 1, height );
+		mPosX = fmod( mPosX, width );
+		mPosY = fmod( mPosY, height );
 
 		cout << mPosX << endl;
 
