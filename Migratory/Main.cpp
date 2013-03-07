@@ -11,6 +11,8 @@
 #include "BoidAgent.h"
 
 #include <stdio.h>
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 /* 
 ==================
@@ -37,10 +39,18 @@ int IndieLib()
 
 	// ----- Set the surfaces into 2d entities -----
 
-	// Creating 2d entity for the Rocket
-	BoidAgent *mBoid = new BoidAgent( Point2D( 400, 300 ) );					
-	mI->_entity2dManager->add( mBoid );					// Entity adding
-	mBoid->setSurface( mSurfaceBoid );					// Set the surface into the entity
+	
+	srand( time( NULL ) );
+
+	BoidAgent *mBoid;
+	BoidAgent *boids[100];
+	 
+	for( int i = 0; i < 100; i++ ) {
+		mBoid = new BoidAgent( Point2D( rand() % 800, rand() % 600 ) );
+		mI->_entity2dManager->add( mBoid );					// Entity adding
+		mBoid->setSurface( mSurfaceBoid );					// Set the surface into the entity
+		boids[ i ] = mBoid;
+	}
 
 
 	// ----- Changing the attributes of the 2d entities -----
@@ -71,24 +81,22 @@ int IndieLib()
 
 		mDelta = mI->_render->getFrameTime() / 1000.0f;
 
-		mBoid->update( mDelta );
+		for( int j = 0; j < 100; j++ ) {
+			mBoid = boids[ j ];
+			mBoid->update( mDelta );
 
-		position = mBoid->getLocation();
-		mPosX = position.getX();
-		mPosY = position.getY();
+			position = mBoid->getLocation();
+			mPosX = position.getX();
+			mPosY = position.getY();
 		
-		mPosX = fmod( mPosX, width );
-		mPosY = fmod( mPosY, height );
+			mPosX = fmod( mPosX, width );
+			mPosY = fmod( mPosY, height );
 
-		cout << mPosX << endl;
-
-		// ----- Updating entities attributes  -----
-		//mBoid->setAngleXYZ (0, 0, mAngle);
-
-		mBoid->setLocation( Point2D( mPosX, mPosY ) );
+			mBoid->setLocation( Point2D( mPosX, mPosY ) );
+			mBoid->setAngleXYZ( 0, 0, mBoid->getHeading().angle() * 180 / 3.141 + 90 );
+		}
 
 		// ----- Render  -----
-
 		mI->_render->beginScene();
 		mI->_render->clearViewPort(255, 255, 255);
 		mI->_entity2dManager->renderEntities2d();

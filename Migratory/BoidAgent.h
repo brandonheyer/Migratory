@@ -1,5 +1,6 @@
 #pragma once
-#include "d:\projects\indielib\personal\migratory\migratory\game\agent.h"
+#include "game/agent.h"
+
 class BoidAgent :
 	public Agent
 {
