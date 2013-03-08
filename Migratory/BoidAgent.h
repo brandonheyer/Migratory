@@ -6,7 +6,7 @@ class BoidAgent :
 {
 public:
 	BoidAgent(void);
-	BoidAgent( Point2D& );
+	BoidAgent( Point2D&, bool );
 
 	~BoidAgent(void);
 

@@ -46,7 +46,7 @@ int IndieLib()
 	BoidAgent *boids[100];
 	 
 	for( int i = 0; i < 100; i++ ) {
-		mBoid = new BoidAgent( Point2D( rand() % 800, rand() % 600 ) );
+		mBoid = new BoidAgent( Point2D( rand() % 800, rand() % 600 ), true );
 		mI->_entity2dManager->add( mBoid );					// Entity adding
 		mBoid->setSurface( mSurfaceBoid );					// Set the surface into the entity
 		boids[ i ] = mBoid;
@@ -89,6 +89,14 @@ int IndieLib()
 			mPosX = position.getX();
 			mPosY = position.getY();
 		
+			if ( mPosX < 0 ) {
+				mPosX += 800;
+			}
+
+			if ( mPosY < 0 ) {
+				mPosY += 600;
+			}
+
 			mPosX = fmod( mPosX, width );
 			mPosY = fmod( mPosY, height );
 
