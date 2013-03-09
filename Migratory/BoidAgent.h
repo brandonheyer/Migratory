@@ -6,10 +6,14 @@ class BoidAgent :
 {
 public:
 	BoidAgent(void);
-	BoidAgent( Point2D&, bool );
+	BoidAgent( Point2D& );
+	BoidAgent( Point2D&, Vector2D& );
 
 	~BoidAgent(void);
 
 	void update( float );
+
+private:
+	void _initialize( Point2D&, Vector2D& );
 };
 

@@ -1,25 +1,24 @@
 #include "BoidAgent.h"
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
-
 
 BoidAgent::BoidAgent(void)
 {
+	this->_initialize( Point2D( 0, 0 ), Vector2D( 1, 1 ) );
 }
 
-BoidAgent::BoidAgent( Point2D& p, bool randomHeading )
+BoidAgent::BoidAgent( Point2D& p ) {
+	this->_initialize( p, Vector2D( 1, 1 ) );
+}
+
+BoidAgent::BoidAgent( Point2D& p, Vector2D& heading )
 {
+	this->_initialize( p, heading );
+}
+
+void BoidAgent::_initialize( Point2D& p, Vector2D& h ) {
+	this->_heading = h;
 	this->_location = p;
-	this->_speed = 25;
+	this->_speed = 100;
 	this->_radius = 5;
-
-
-	if ( randomHeading ) {
-		this->_heading = Vector2D( ( ( rand() % 20 ) - 10.0f ) / 10.0f, ( ( rand() % 20 ) - 10.0f ) / 10.0f );
-	} else {
-		this->_heading = Vector2D( 1, 1 );
-	}
-
 	this->_heading.normalize();
 }
 

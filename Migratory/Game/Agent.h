@@ -14,11 +14,11 @@ public:
 
 	virtual void update( float ) = 0;
 
-	Point2D getLocation( void );
-	Point2D getDestination( void );
+	Point2D* getLocation( void );
+	Point2D* getDestination( void );
 	float getRadius( void );
 	float getSpeed( void );
-	Vector2D getHeading( void );
+	Vector2D* getHeading( void );
 
 	void setLocation( Point2D& );
 	void setDestination( Point2D& );

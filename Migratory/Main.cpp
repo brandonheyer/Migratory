@@ -9,10 +9,9 @@
 #include "IndieLib/IND_Font.h"
 #include "WorkingPath.h"
 #include "BoidAgent.h"
+#include "BoidGame.h"
 
 #include <stdio.h>
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
 
 /* 
 ==================
@@ -37,72 +36,22 @@ int IndieLib()
 	IND_Surface *mSurfaceBoid = new IND_Surface();
 	if ( !mI->_surfaceManager->add( mSurfaceBoid, "../res/boid.png", IND_ALPHA, IND_32) ) return 0;
 
-	// ----- Set the surfaces into 2d entities -----
-
+	// ----- Set the surfaces into 2d entities ----
+	BoidGame boidGame;
+	BoidAgent *boid;
 	
-	srand( time( NULL ) );
-
-	BoidAgent *mBoid;
-	BoidAgent *boids[100];
-	 
 	for( int i = 0; i < 100; i++ ) {
-		mBoid = new BoidAgent( Point2D( rand() % 800, rand() % 600 ), true );
-		mI->_entity2dManager->add( mBoid );					// Entity adding
-		mBoid->setSurface( mSurfaceBoid );					// Set the surface into the entity
-		boids[ i ] = mBoid;
+		boid = boidGame.addBird();
+		mI->_entity2dManager->add( boid );					// Entity adding
+		boid->setSurface( mSurfaceBoid );					// Set the surface into the entity
 	}
-
-
-	// ----- Changing the attributes of the 2d entities -----
-
-	// ----- Main Loop -----
-
-	float mAngle = 0;
-	float mScale = 1.0f;
-	int mSpeedRotation = 5;
-	int mSpeedScaling = 1;
-	float mDelta;
-
-	float mPosX;
-	float mPosY;
-
-	Point2D position;
-
-	float width = 800;
-	float height = 600;
 
 	while ( !mI->_input->onKeyPress(IND_ESCAPE) && !mI->_input->quit() )
 	{
 		// ----- Input update ----
 
 		mI->_input->update();
-
-		// ----- Input ----
-
-		mDelta = mI->_render->getFrameTime() / 1000.0f;
-
-		for( int j = 0; j < 100; j++ ) {
-			mBoid = boids[ j ];
-			mBoid->update( mDelta );
-
-			position = mBoid->getLocation();
-			mPosX = position.getX();
-			mPosY = position.getY();
-		
-			if ( mPosX < 0 ) {
-				mPosX += 800;
-			}
-
-			if ( mPosY < 0 ) {
-				mPosY += 600;
-			}
-
-			mPosX = fmod( mPosX, width );
-			mPosY = fmod( mPosY, height );
-
-			mBoid->setLocation( Point2D( mPosX, mPosY ) );
-			mBoid->setAngleXYZ( 0, 0, mBoid->getHeading().angle() * 180 / 3.141 + 90 );
-		}
+		boidGame.update( mI->_render->getFrameTime() / 1000.0f );
 
 		// ----- Render  -----
 		mI->_render->beginScene();

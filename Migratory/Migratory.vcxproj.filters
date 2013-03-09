@@ -42,6 +42,9 @@
     <ClInclude Include="BoidAgent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BoidGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BoidAgent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoidGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

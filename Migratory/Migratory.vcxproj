@@ -76,6 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BoidGame.h" />
     <ClInclude Include="BoidAgent.h" />
     <ClInclude Include="CIndieLib_vc2008.h" />
     <ClInclude Include="Game\Agent.h" />
@@ -87,6 +88,7 @@
     <ClInclude Include="WorkingPath.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoidGame.cpp" />
     <ClCompile Include="BoidAgent.cpp" />
     <ClCompile Include="CIndieLib_vc2008.cpp" />
     <ClCompile Include="CoordinateTranslator.cpp" />

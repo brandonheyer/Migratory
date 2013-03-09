@@ -24,14 +24,14 @@ Agent::~Agent(void)
 {
 }
 
-Point2D Agent::getLocation( void )
+Point2D* Agent::getLocation( void )
 {
-	return this->_location;
+	return &( this->_location );
 }
 
-Point2D Agent::getDestination( void )
+Point2D* Agent::getDestination( void )
 {
-	return this->_destination;
+	return &( this->_destination );
 }
 
 float Agent::getRadius( void )
@@ -44,9 +44,9 @@ float Agent::getSpeed( void )
 	return this->_speed;
 }
 
-Vector2D Agent::getHeading( void )
+Vector2D* Agent::getHeading( void )
 {
-	return this->_heading;
+	return &( this->_heading );
 }
 
 void Agent::setLocation( Point2D& p )
