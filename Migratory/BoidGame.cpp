@@ -6,10 +6,10 @@ BoidGame::BoidGame(void)
 {
 	srand( time( NULL ) );
 
-	this->alignmentAmount = 500;
-	this->cohesionAmount = 50;
-	this->separationAmount = 50;
-	this->matchRadius = 100;
+	this->alignmentAmount = 25;
+	this->cohesionAmount = 25;
+	this->separationAmount = 25;
+	this->matchRadius = 250;
 }
 
 BoidGame::~BoidGame(void)
@@ -28,7 +28,7 @@ BoidGame::~BoidGame(void)
 BoidAgent* BoidGame::addBird( void )
 {
 	BoidAgent* boid = new BoidAgent( 
-		Point2D( rand() % 1024, rand() % 768 ),
+		Point2D( rand() % 800, rand() % 600 ),
 		Vector2D( ( ( rand() % 20 ) - 10.0f ) / 10.0f, ( ( rand() % 20 ) - 10.0f ) / 10.0f )
 	);
 
@@ -112,6 +112,7 @@ void BoidGame::update( float delta )
 		if ( this->matches.size() >= 1 ) {
 			*alignment /= this->matches.size() + 0.0f;
 			*cohesion /= this->matches.size() + 0.0f;
+			*separation /= this->matches.size() + 0.0f;
 		}
 
 		cohesion->setX( cohesion->getX() - boid->getLocation()->getX() );
@@ -134,6 +135,7 @@ void BoidGame::update( float delta )
 		*separation /= this->separationAmount;
 
 		temp = *( boid->getHeading() );
+		temp.normalize();
 		temp += *alignment;
 		temp += *cohesion;
 		temp += *separation;
@@ -147,15 +149,15 @@ void BoidGame::update( float delta )
 		yPos = position.getY();
 		
 		if ( xPos < 0 ) {
-			xPos += 1024.0f;
+			xPos += 800.0f;
 		}
 
 		if ( yPos < 0 ) {
-			yPos += 768.0f;
+			yPos += 600.0f;
 		}
 
-		xPos = fmod( xPos, 1024.0f );
-		yPos = fmod( yPos, 768.0f );
+		xPos = fmod( xPos, 800.0f );
+		yPos = fmod( yPos, 600.0f );
 
 		boid->setLocation( Point2D( xPos, yPos ) );
 		boid->setAngleXYZ( 0, 0, boid->getHeading()->angle() * 180.0f / 3.141f + 90.0f );
@@ -164,30 +166,78 @@ void BoidGame::update( float delta )
 	
 void BoidGame::increaseAlignment( void )
 {
+	if ( alignmentAmount == 1 ) {
+		return;
+	}
+
 	alignmentAmount -= 5;
+
+	if ( alignmentAmount < 1 ) {
+		alignmentAmount = 1;
+	}
 }
 
 void BoidGame::increaseCohesion( void )
 {
+	if ( cohesionAmount == 1 ) {
+		return; 
+	}
+
 	cohesionAmount -= 5;
+
+	if ( cohesionAmount < 1 ) {
+		cohesionAmount = 1;
+	}
 }
 
 void BoidGame::increaseSeparation( void )
 {
+	if ( separationAmount == 1 ) {
+		return;
+	}
+
 	separationAmount -= 5;
+
+	if ( separationAmount < 1 ) {
+		separationAmount = 1;
+	}
 }
 
 void BoidGame::decreaseAlignment( void )
 {
+	if ( alignmentAmount == 50 ) {
+		return;
+	}
+
 	this->alignmentAmount += 5;
+
+	if ( alignmentAmount > 49 ) {
+		alignmentAmount = 50;
+	}
 }
 
 void BoidGame::decreaseCohesion( void )
 {
+	if ( cohesionAmount == 50 ) {
+		return;
+	}
+
 	this->cohesionAmount += 5;
+
+	if ( cohesionAmount > 49 ) {
+		cohesionAmount = 50;
+	}
 }
 
 void BoidGame::decreaseSeparation( void )
 {
+	if ( separationAmount == 50 ) {
+		return;
+	}
+
 	this->separationAmount += 5;
+
+	if ( separationAmount > 49 ) {
+		separationAmount = 50;
+	}
 }
