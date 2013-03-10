@@ -5,8 +5,12 @@
 BoidGame::BoidGame(void)
 {
 	srand( time( NULL ) );
-}
 
+	this->alignmentAmount = 500;
+	this->cohesionAmount = 50;
+	this->separationAmount = 50;
+	this->matchRadius = 100;
+}
 
 BoidGame::~BoidGame(void)
 {
@@ -24,7 +28,7 @@ BoidGame::~BoidGame(void)
 BoidAgent* BoidGame::addBird( void )
 {
 	BoidAgent* boid = new BoidAgent( 
-		Point2D( rand() % 800, rand() % 600 ),
+		Point2D( rand() % 1024, rand() % 768 ),
 		Vector2D( ( ( rand() % 20 ) - 10.0f ) / 10.0f, ( ( rand() % 20 ) - 10.0f ) / 10.0f )
 	);
 
@@ -57,6 +61,8 @@ void BoidGame::update( float delta )
 		cohesion = this->cohesion[ i ];
 		separation = this->separation[ i ];
 
+		matches.clear();
+
 		alignment->setX( 0 );
 		alignment->setY( 0 );
 
@@ -67,7 +73,21 @@ void BoidGame::update( float delta )
 		separation->setY( 0 );
 
 		for ( j = 0; j < this->boids.size(); j++ ) {
+			if ( i == j ) {
+				continue;
+			}
+
 			match = this->boids[ j ];
+			temp.setX( match->getLocation()->getX() - boid->getLocation()->getX() );
+			temp.setY( match->getLocation()->getY() - boid->getLocation()->getY() );
+
+			if ( temp.magnitudeSq() <= this->matchRadius * this->matchRadius ) {
+				this->matches.push_back( match );
+			}
+		}
+
+		for ( j = 0; j < this->matches.size(); j++ ) {
+			match = this->matches[ j ];
 
 			temp = *( match->getHeading() );
 			temp *= match->getSpeed();
@@ -89,8 +109,10 @@ void BoidGame::update( float delta )
 			}
 		}
 
-		*alignment /= this->boids.size() + 0.0f;
-		*cohesion /= this->boids.size() + 0.0f;
+		if ( this->matches.size() >= 1 ) {
+			*alignment /= this->matches.size() + 0.0f;
+			*cohesion /= this->matches.size() + 0.0f;
+		}
 
 		cohesion->setX( cohesion->getX() - boid->getLocation()->getX() );
 		cohesion->setY( cohesion->getY() - boid->getLocation()->getY() );
@@ -107,9 +129,9 @@ void BoidGame::update( float delta )
 		cohesion->normalize();
 		separation->normalize();
 
-		*alignment /= 10000;
-		*cohesion /= 50;
-		*separation /= 500;
+		*alignment /= this->alignmentAmount;
+		*cohesion /= this->cohesionAmount;
+		*separation /= this->separationAmount;
 
 		temp = *( boid->getHeading() );
 		temp += *alignment;
@@ -125,17 +147,47 @@ void BoidGame::update( float delta )
 		yPos = position.getY();
 		
 		if ( xPos < 0 ) {
-			xPos += 800.0f;
+			xPos += 1024.0f;
 		}
 
 		if ( yPos < 0 ) {
-			yPos += 600.0f;
+			yPos += 768.0f;
 		}
 
-		xPos = fmod( xPos, 800.0f );
-		yPos = fmod( yPos, 600.0f );
+		xPos = fmod( xPos, 1024.0f );
+		yPos = fmod( yPos, 768.0f );
 
 		boid->setLocation( Point2D( xPos, yPos ) );
 		boid->setAngleXYZ( 0, 0, boid->getHeading()->angle() * 180.0f / 3.141f + 90.0f );
 	}
+}
+	
+void BoidGame::increaseAlignment( void )
+{
+	alignmentAmount -= 5;
+}
+
+void BoidGame::increaseCohesion( void )
+{
+	cohesionAmount -= 5;
+}
+
+void BoidGame::increaseSeparation( void )
+{
+	separationAmount -= 5;
+}
+
+void BoidGame::decreaseAlignment( void )
+{
+	this->alignmentAmount += 5;
+}
+
+void BoidGame::decreaseCohesion( void )
+{
+	this->cohesionAmount += 5;
+}
+
+void BoidGame::decreaseSeparation( void )
+{
+	this->separationAmount += 5;
 }

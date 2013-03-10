@@ -13,27 +13,27 @@
                              (_/                        
 Indielib version: 0.5.0
 
-[g_debug.log]: (Thrusday, 7 of March 2013)
+[g_debug.log]: (Saturday, 9 of March 2013)
 
-[01:14:41] [ BEGIN ] -- Creating Render --
+[13:45:46] [ BEGIN ] -- Creating Render --
                      {
- 600
- Requested Window Width:  800
+ 768
+ Requested Window Width:  1024
  Requested Window Bpp:  32
  Requested Window FullScreen:  0
  Requested Window Double buffer:  1
            [ INFO  ]    Initiating OpenGL SDL Context Parameters           [ INFO  ]    OpenGL Context Parameters Initated OK
-[01:14:41] [ BEGIN ]    -- Creating SDL window --
+[13:45:46] [ BEGIN ]    -- Creating SDL window --
                         {
            [  OK   ]       Window created
            [ INFO  ]       Mode: Window
                         }
-[01:14:42] [  END  ]    Window OK [Elapsed time = 0.71 seg]
-[01:14:42] [ BEGIN ]    -- Creating OpenGL Render --
+[13:45:50] [  END  ]    Window OK [Elapsed time = 4.363 seg]
+[13:45:50] [ BEGIN ]    -- Creating OpenGL Render --
                         {
            [ INFO  ]       Creating OpenGL context OK
            [ INFO  ]       OpenGL context created OK
-[01:14:42] [ BEGIN ]       -- Checking created OpenGL context pixel format --
+[13:45:51] [ BEGIN ]       -- Checking created OpenGL context pixel format --
                            {
            [ INFO  ]          Created GL context R size:  8
            [ INFO  ]          Created GL context G size:  8
@@ -42,60 +42,60 @@ Indielib version: 0.5.0
            [ INFO  ]          Created GL context Depth size:  24
            [ INFO  ]          Created GL context Stencil size:  8
                            }
-[01:14:42] [  END  ]       Different GL context pixel format used [Elapsed time = 0.003 seg]
-[01:14:42] [ BEGIN ]       -- Hardware information --
+[13:45:51] [  END  ]       Different GL context pixel format used [Elapsed time = 0 seg]
+[13:45:51] [ BEGIN ]       -- Hardware information --
                            {
            [ INFO  ]          OpenGL version: GL_VERSION_1_5
            [ INFO  ]          Mark: NO DATA
            [ INFO  ]          Chip: NO DATA
            [ INFO  ]          Primitive antialising: No
-           [ INFO  ]          Maximum texture size: 4096 x 4096
+           [ INFO  ]          Maximum texture size: 16384 x 16384
            [ INFO  ]          Texture units: 8                           }
-[01:14:42] [  END  ]       Hardware Ok [Elapsed time = 0 seg]
+[13:45:51] [  END  ]       Hardware Ok [Elapsed time = 0 seg]
                         }
-[01:14:42] [  END  ]    OpenGL Render Created [Elapsed time = 0.084 seg]
-[01:14:42] [ BEGIN ]    -- Initializing ImageManager --
+[13:45:51] [  END  ]    OpenGL Render Created [Elapsed time = 0.238 seg]
+[13:45:51] [ BEGIN ]    -- Initializing ImageManager --
                         {
            [  OK   ]       Preparing ImageManager
            [  OK   ]       Using FreeImage ver:
            [  OK   ]       3.15.3
            [  OK   ]       This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
                         }
-[01:14:42] [  END  ]    ImageManager OK [Elapsed time = 0.001 seg]
-[01:14:42] [ BEGIN ]    -- Initializing SurfaceManager --
+[13:45:51] [  END  ]    ImageManager OK [Elapsed time = 0.001 seg]
+[13:45:51] [ BEGIN ]    -- Initializing SurfaceManager --
                         {
            [  OK   ]       Checking IND_Render
            [  OK   ]       Checking IND_ImageManager
                         }
-[01:14:42] [  END  ]    SurfaceManager OK [Elapsed time = 0 seg]
-[01:14:42] [ BEGIN ]    -- Initializing AnimationManager --
+[13:45:51] [  END  ]    SurfaceManager OK [Elapsed time = 0 seg]
+[13:45:51] [ BEGIN ]    -- Initializing AnimationManager --
                         {
            [  OK   ]       SurfaceManager Ok
            [  OK   ]       ImageManager Ok
                         }
-[01:14:42] [  END  ]    AnimationManager OK [Elapsed time = 0 seg]
-[01:14:42] [ BEGIN ]    -- Initializing FontManager --
+[13:45:51] [  END  ]    AnimationManager OK [Elapsed time = 0 seg]
+[13:45:51] [ BEGIN ]    -- Initializing FontManager --
                         {
            [  OK   ]       SurfaceManager Ok
            [  OK   ]       ImageManager Ok
                         }
-[01:14:42] [  END  ]    FontManager OK [Elapsed time = 0 seg]
-[01:14:42] [ BEGIN ]    -- Initializing Entity2dManager --
+[13:45:51] [  END  ]    FontManager OK [Elapsed time = 0 seg]
+[13:45:51] [ BEGIN ]    -- Initializing Entity2dManager --
                         {
            [  OK   ]       Preparing Entity2dManager
            [  OK   ]        Checking IND_Render
                         }
-[01:14:42] [  END  ]    Entity2dManager OK [Elapsed time = 0 seg]
-[01:14:42] [ BEGIN ]    -- Loading Image --
+[13:45:51] [  END  ]    Entity2dManager OK [Elapsed time = 0 seg]
+[13:45:51] [ BEGIN ]    -- Loading Image --
                         {
            [ INFO  ]       File name: ../res/boid.png
            [ INFO  ]       Extension: png
            [ ERROR ]       Image not found
                         }
-[01:14:42] [  END  ]    Error occurred [Elaped time = 0 seg]
-[01:14:42] [ BEGIN ]    -- Freeing image --
+[13:45:51] [  END  ]    Error occurred [Elaped time = 0 seg]
+[13:45:51] [ BEGIN ]    -- Freeing image --
                         {
            [ INFO  ]       This operation can not be done 
            [ ERROR ]       Invalid Id or IND_ImageManager not correctly initialized
                         }
-[01:14:42] [  END  ]    Error occurred [Elaped time = 0 seg]
+[13:45:51] [  END  ]    Error occurred [Elaped time = 0 seg]

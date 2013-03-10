@@ -40,7 +40,7 @@ int IndieLib()
 	BoidGame boidGame;
 	BoidAgent *boid;
 	
-	for( int i = 0; i < 100; i++ ) {
+	for( int i = 0; i < 200; i++ ) {
 		boid = boidGame.addBird();
 		mI->_entity2dManager->add( boid );					// Entity adding
 		boid->setSurface( mSurfaceBoid );					// Set the surface into the entity
@@ -49,6 +49,19 @@ int IndieLib()
 	while ( !mI->_input->onKeyPress(IND_ESCAPE) && !mI->_input->quit() )
 	{
 		// ----- Input update ----
+		if ( mI->_input->isKeyPressed( IND_Q ) ) {
+			boidGame.decreaseAlignment();
+		} else if ( mI->_input->isKeyPressed( IND_W ) ) {
+			boidGame.increaseAlignment();
+		} else if ( mI->_input->isKeyPressed( IND_A ) ) {
+			boidGame.decreaseCohesion();
+		} else if ( mI->_input->isKeyPressed( IND_S ) ) {
+			boidGame.increaseCohesion();
+		} else if ( mI->_input->isKeyPressed( IND_Z ) ) {
+			boidGame.decreaseSeparation();
+		} else if ( mI->_input->isKeyPressed( IND_X ) ) {
+			boidGame.increaseSeparation();
+		}
 
 		mI->_input->update();
 		boidGame.update( mI->_render->getFrameTime() / 1000.0f );

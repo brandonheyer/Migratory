@@ -17,7 +17,7 @@ BoidAgent::BoidAgent( Point2D& p, Vector2D& heading )
 void BoidAgent::_initialize( Point2D& p, Vector2D& h ) {
 	this->_heading = h;
 	this->_location = p;
-	this->_speed = 100;
+	this->_speed = 150;
 	this->_radius = 5;
 	this->_heading.normalize();
 }

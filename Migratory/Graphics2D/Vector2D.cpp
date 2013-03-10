@@ -184,7 +184,7 @@ Vector2D& Vector2D::operator *= ( float rhs )
 
 Vector2D Vector2D::operator /  ( const float rhs ) const
 {
-	if ( rhs == 0 ) {
+	if ( rhs < 0.0001f ) {
 		throw "Cannot divide Vector2D by 0";
 	}
 
@@ -193,7 +193,7 @@ Vector2D Vector2D::operator /  ( const float rhs ) const
 
 Vector2D& Vector2D::operator /= ( float rhs )
 {
-	if ( rhs == 0 ) {
+	if ( rhs < 0.0001f ) {
 		throw "Cannot divide Vector2D by 0";
 	}
 
