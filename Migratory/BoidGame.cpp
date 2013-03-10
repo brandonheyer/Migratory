@@ -9,7 +9,7 @@ BoidGame::BoidGame(void)
 	this->alignmentAmount = 25;
 	this->cohesionAmount = 25;
 	this->separationAmount = 25;
-	this->matchRadius = 250;
+	this->matchRadius = 50;
 }
 
 BoidGame::~BoidGame(void)
